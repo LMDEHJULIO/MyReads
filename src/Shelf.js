@@ -20,16 +20,17 @@ class Shelf extends Component {
   // </select>}
 
   render(){
-    const bookClass = this.props.bookClass
+    const shelfType = this.props.shelfType
     const heading = this.props.heading
     const books = this.props.books
 
     return(
       <div>
+
         <h3>{heading}</h3>
           <div className="bookshelf-books">
             <ul className="books-grid">
-              {books.filter(book => book.type === heading).map(book => (
+              {books.filter(book => ( book.shelf === shelfType)).map(book => (
                 <li key={book.title}>{book.title}</li>
               ))}
             </ul>
