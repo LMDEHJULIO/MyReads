@@ -6,7 +6,11 @@ import './App.css';
 
 const bookClass = ["Reading", "Want to Read", "Read"]
 const selectBox = document.getElementById('typeChanger');
-
+// changeType = (e,book) => {
+//   this.setState(
+//     book.type = e.target.value
+//   )
+// }
 
 
 class App extends Component {
@@ -18,19 +22,13 @@ class App extends Component {
     ]
   }
 
-  changeType = (book) => {
-    this.setState(
-      book.type = selectBox.value
-    )
-  }
-
   render() {
     return (
       <div className="App">
         <BookShelf/>
-          <Shelf heading={bookClass[0]} books={this.state.books} bookClass={bookClass}/>
-          <Shelf heading={bookClass[1]} books={this.state.books} bookClass={bookClass}/>
-          <Shelf heading={bookClass[2]} books={this.state.books} bookClass={bookClass}/>
+          <Shelf heading={bookClass[0]} books={this.state.books} bookClass={bookClass} />
+          <Shelf heading={bookClass[1]} books={this.state.books} bookClass={bookClass} />
+          <Shelf heading={bookClass[2]} books={this.state.books} bookClass={bookClass} />
       </div>
     );
   }
