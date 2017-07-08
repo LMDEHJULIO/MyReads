@@ -9,8 +9,7 @@ class BookShelf extends Component {
     return(
       <div className="book-shelf">
         <div className="heading"><h1>MyReads</h1></div>
-        <div className="shelf-space"> //would be list-books-content
-
+        <div className="shelf-space"> 
         </div>
       </div>
     )
