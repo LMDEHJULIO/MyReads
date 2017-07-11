@@ -15,7 +15,7 @@ class Shelf extends Component {
           <div className="bookshelf-books">
             <ul className="books-grid">
               {books.filter(book => ( book.shelf === shelfType)).map(book => (
-                <li key={book.title}>
+                <li key={book.title} style={{backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
                 {book.title}
                   <select className="type-changer" value = {book.shelf} onChange={(event) => this.props.changeShelf(book, event.target.value)}>
                     <option value="none" disabled>Move to...</option>

@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path="/" exact render= {()=>(
+        <Route exact path="/" render= {()=>(
           <div>
           <BookShelf/>
             <Shelf heading="Reading" shelfType="currentlyReading" books={this.state.books} changeShelf = {this.changeShelf}/>
@@ -44,7 +44,9 @@ class App extends Component {
 
         </Route>
 
-        <Route path="/search" exact component={Search}/>
+        <Route path="/search" render= {()=>(
+          <Search books={this.state.books}/>
+        )}/>
 
       </div>
     );
