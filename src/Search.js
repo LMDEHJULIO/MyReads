@@ -1,16 +1,19 @@
 import React, {Component} from 'react'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
+import * as BooksAPI from './utils/BooksAPI';
 
 class Search extends Component {
 
 
   state = {
+    books: [],
     query: ''
   }
 
   updateQuery = (query) => {
-    this.setState({query: query.trim()})
+    BooksAPI.search(query).then(books=> this.setState({books}));
+    this.setState({query})
   }
 
   render(){

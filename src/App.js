@@ -7,7 +7,6 @@ import logo from './logo.svg';
 import * as BooksAPI from './utils/BooksAPI'
 import './App.css';
 
-
 const selectBox = document.getElementById('typeChanger');
 
 class App extends Component {
@@ -16,7 +15,6 @@ class App extends Component {
     books : []
   }
 
-
   changeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(()=> this.getBooks())
   }
@@ -24,7 +22,6 @@ class App extends Component {
   getBooks = () => {
   BooksAPI.getAll().then( books => { this.setState({books})});
   };
-
 
   componentDidMount(){
     this.getBooks();

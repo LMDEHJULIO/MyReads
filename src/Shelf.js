@@ -9,23 +9,30 @@ class Shelf extends Component {
     const books = this.props.books
 
     return(
-      <div>
+      <div className="bookshelf">
 
-        <h3>{heading}</h3>
+        <h3 className="bookshelf-title">{heading}</h3>
           <div className="bookshelf-books">
-            <ul className="books-grid">
+            <ol className="books-grid">
               {books.filter(book => ( book.shelf === shelfType)).map(book => (
-                <li key={book.title} style={{backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
-                {book.title}
-                  <select className="type-changer" value = {book.shelf} onChange={(event) => this.props.changeShelf(book, event.target.value)}>
-                    <option value="none" disabled>Move to...</option>
-                    <option value="currentlyReading">Reading</option>
-                    <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
-                  </select>
-                </li>
+                <div className="book-top">
+                  <li>
+
+                    <div className="book-cover" key={book.title} style={{ width: 128, height: 193, backgroundImage:`url(${book.imageLinks.smallThumbnail})`, backgroundRepeat: 'no-repeat'}}></div>
+
+                    <div className="book-shelf-changer">
+                      <select value = {book.shelf} onChange={(event) => this.props.changeShelf(book, event.target.value)}>
+                        <option value="none" disabled>Move to...</option>
+                        <option value="currentlyReading">Reading</option>
+                        <option value="wantToRead">Want to Read</option>
+                        <option value="read">Read</option>
+                      </select>
+                    </div>
+                  </li>
+                </div>
+
               ))}
-            </ul>
+            </ol>
           </div>
       </div>
     )
