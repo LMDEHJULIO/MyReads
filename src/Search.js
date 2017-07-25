@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import escapeRegExp from 'escape-string-regexp'
+import {Link} from 'react-router-dom'
 import sortBy from 'sort-by'
 import * as BooksAPI from './utils/BooksAPI';
 
@@ -28,21 +29,39 @@ class Search extends Component {
 
     return (
 
-      <div>
-        <input
-        className="search-books"
-        type="text"
-        placeholder="Search Books"
-        value = {this.state.query}
-        onChange= {(event)=> this.updateQuery(event.target.value)}
-        />
+      <div className="search-books">
+        <div className="search-books-bar">
+          <Link to="/" className="close-search"> Close </Link>
+          <div className="searc-books-input-wrapper">
+            <input
+              type="text"
+              placeholder="Search Books"
+              value = {this.state.query}
+              onChange= {(event)=> this.updateQuery(event.target.value)}
+            />
+          </div>
+        </div>
 
-        <ul>
-          {showingBooks.map(book => (
-            <li>{book.title}</li>
-          ))}
-        </ul>
+        <div className="search-books-results">
+          <ol className="books-grid">
+            {showingBooks.map(book => (
+              <div className="book-top">
+                <li className="">
+                <div className="book-cover" key={book.title} style={{ width: 128, height: 193, backgroundImage:`url(${book.imageLinks.smallThumbnail})`, backgroundRepeat: 'no-repeat'}}></div>
 
+                  <div className="book-shelf-changer">
+                    <select value = {book.shelf} onChange={(event) => this.props.changeShelf(book, event.target.value)}>
+                      <option value="none" disabled>Move to...</option>
+                      <option value="currentlyReading">Reading</option>
+                      <option value="wantToRead">Want to Read</option>
+                      <option value="read">Read</option>
+                    </select>
+                  </div>
+                </li>
+              </div>
+            ))}
+          </ol>
+        </div>
       </div>
 
     )
