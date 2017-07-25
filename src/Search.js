@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import escapeRegExp from 'escape-string-regexp'
 import {Link} from 'react-router-dom'
-import sortBy from 'sort-by'
-import * as BooksAPI from './utils/BooksAPI';
+import * as BooksAPI from './utils/BooksAPI'
 
 class Search extends Component {
 
