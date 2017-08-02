@@ -32,7 +32,7 @@ class Search extends Component {
       <div className="search-books">
         <div className="search-books-bar">
           <Link to="/" className="close-search"> Close </Link>
-          <div className="searc-books-input-wrapper">
+          <div className="search-books-input-wrapper">
             <input
               type="text"
               placeholder="Search Books"
@@ -45,7 +45,7 @@ class Search extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {showingBooks.map(book => (
-              <Book/>
+              <Book book = {book} changeShelf={this.props.changeShelf}/>
             ))}
           </ol>
         </div>
