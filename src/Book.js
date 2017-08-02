@@ -8,7 +8,7 @@ class Book extends Component {
         
         return (
             
-            <li className="book" key={book.id}>
+            <li className="book">
                 <div className="book-top">
                   
   
