@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Book from './Book'
 import escapeRegExp from 'escape-string-regexp'
 import {Link} from 'react-router-dom'
 import * as BooksAPI from './utils/BooksAPI'
@@ -21,9 +22,9 @@ class Search extends Component {
     let showingBooks
     if (this.state.query) {
       const match = new RegExp(escapeRegExp(this.state.query), 'i')
-      showingBooks = this.props.books.filter((book) => match.test(book.title))
+      showingBooks = this.state.books.filter((book) => match.test(book.title))
     } else {
-      showingBooks = this.props.books
+      showingBooks = this.state.books
     }
 
     return (
@@ -44,20 +45,7 @@ class Search extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {showingBooks.map(book => (
-              <div className="book-top">
-                <li className="">
-                <div className="book-cover" key={book.title} style={{ width: 128, height: 193, backgroundImage:`url(${book.imageLinks.smallThumbnail})`, backgroundRepeat: 'no-repeat'}}></div>
-
-                  <div className="book-shelf-changer">
-                    <select value = {book.shelf} onChange={(event) => this.props.changeShelf(book, event.target.value)}>
-                      <option value="none" disabled>Move to...</option>
-                      <option value="currentlyReading">Reading</option>
-                      <option value="wantToRead">Want to Read</option>
-                      <option value="read">Read</option>
-                    </select>
-                  </div>
-                </li>
-              </div>
+              <Book/>
             ))}
           </ol>
         </div>

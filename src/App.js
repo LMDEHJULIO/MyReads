@@ -31,7 +31,7 @@ class App extends Component {
         
           <div>
           <div className="list-books-title"><h1>MyReads</h1></div>
-            <div class="list-books-content">
+            <div className="list-books-content">
             
                 <Shelf heading="Reading" shelfType="currentlyReading" books={this.state.books} changeShelf = {this.changeShelf}/>
                 <Shelf heading="Want to Read" shelfType="wantToRead" books={this.state.books} changeShelf = {this.changeShelf}/>
@@ -48,7 +48,7 @@ class App extends Component {
         </Route>
 
         <Route path="/search" render= {()=>(
-          <Search books={this.state.books} changeShelf={this.changeShelf}/>
+          <Search changeShelf={this.changeShelf}/>
         )}/>
 
       </div>
