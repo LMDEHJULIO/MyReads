@@ -15,6 +15,9 @@ class Search extends Component {
   updateQuery = (query) => {
     BooksAPI.search(query).then(books=> this.setState({books}));
     this.setState({query})
+    if (!query){
+      this.setState({query:''})
+    }
   }
 
   render(){
@@ -44,7 +47,13 @@ class Search extends Component {
 
         <div className="search-books-results">
           <ol className="books-grid">
-            {showingBooks.map(book => (
+            {showingBooks === undefined ? 
+            
+            <h1>No books currently</h1>  
+            
+            : 
+            
+            showingBooks.map(book => (
               <Book book = {book} changeShelf={this.props.changeShelf}/>
             ))}
           </ol>
